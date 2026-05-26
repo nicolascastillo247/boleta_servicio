@@ -26,7 +26,6 @@ public class BoletaService {
         return boletaRepository.findById(id).orElse(null);
     }
 
-    // Lógica para simular la impresión física o digital
     public String imprimirDocumento(Long id) {
         BoletaFactura doc = findById(id);
         if (doc != null) {
@@ -35,7 +34,6 @@ public class BoletaService {
         return "Documento no encontrado";
     }
 
-    // Lógica para simular el envío del correo electrónico
     public boolean enviarPorEmail(Long id, String email) {
         BoletaFactura doc = findById(id);
         if (doc != null) {
@@ -43,5 +41,13 @@ public class BoletaService {
             return true;
         }
         return false;
+    }
+
+    public String exportarBoleta(Long id) {
+        BoletaFactura doc = findById(id);
+        if (doc != null) {
+            return doc.getTipo() + "_" + doc.getIdGeneral() + "_exportado.pdf";
+        }
+        return null;
     }
 }

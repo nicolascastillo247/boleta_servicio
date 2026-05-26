@@ -30,7 +30,6 @@ public class BoletaFactura {
     @Column(nullable = false)
     private int total;
 
-    // Guarda una lista con los IDs de los productos comprados en una tabla intermedia automática
     @ElementCollection
     @CollectionTable(
         name = "boleta_contenido", 

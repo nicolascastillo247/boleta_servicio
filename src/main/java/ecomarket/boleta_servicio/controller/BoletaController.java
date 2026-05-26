@@ -48,4 +48,14 @@ public class BoletaController {
         }
         return new ResponseEntity<>("Error al enviar o documento inexistente", HttpStatus.NOT_FOUND);
     }
+
+
+    @GetMapping("/{id}/exportar")
+    public ResponseEntity<String> exportar(@PathVariable Long id) {
+        String nombreArchivo = boletaService.exportarBoleta(id);
+        if (nombreArchivo != null) {
+            return new ResponseEntity<>("Documento descargado con éxito: " + nombreArchivo, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No se encontró el documento para exportar", HttpStatus.NOT_FOUND);
+    }
 }
